@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map</title>
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.20/esri/themes/light/main.css"
+    />
+    <script src="https://js.arcgis.com/4.20/"></script>
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="viewDiv"></div>
+    <script>
+      require([
+        "esri/Map",
+        "esri/views/MapView",
+        "esri/layers/FeatureLayer",
+        "esri/widgets/Editor",
+        "esri/widgets/ScaleBar",
+        "esri/widgets/Legend",
+        "esri/widgets/Search",
+
+        
+      ], function (Map, MapView, FeatureLayer, Editor, ScaleBar, Legend,Search) {
+        const map = new Map({
+          basemap: "arcgis-topographic",
+        });
+
+        const view = new MapView({
+          container: "viewDiv",
+          map: map,
+          center: [31.2357, 30.0444],
+          zoom: 6,
+        });
+        const editor = new Editor({
+          view: view,
+        });
+        view.ui.add(editor, "top-right");
+        const scalebar = new ScaleBar({
+          view: view,
+        });
+        view.ui.add(scalebar, "bottom-left");
+        const legend = new Legend({
+          view: view,
+        });
+        view.ui.add(legend, "top-right");
+        for (var i = 0; i <= 6; i++) {
+        var pointLayer = new FeatureLayer({
+          url: "https://services.arcgis.com/TgdA1xZ19xwOr58w/arcgis/rest/services/service/FeatureServer/" + i
+        });
+        map.add(pointLayer);
+      }
+
+      var lineLayer = new FeatureLayer({
+        url: "https://services.arcgis.com/TgdA1xZ19xwOr58w/arcgis/rest/services/service/FeatureServer/7"
+      });
+      map.add(lineLayer);
+
+      for (var j = 8; j <= 10; j++) {
+        var polygonLayer = new FeatureLayer({
+          url: "https://services.arcgis.com/TgdA1xZ19xwOr58w/arcgis/rest/services/service/FeatureServer/" + j
+        });
+        map.add(polygonLayer);
+      }
+
+
+            var searchWidget = new Search({
+                view: view,
+                container: "searchWidget"
+            });
+            view.ui.add(searchWidget, {
+                position: "top-left"
+            });
+
+            
+        
+            view.ui.add(legend, {
+                position: "left"
+            });
+            var sketchWidget = new Sketch({
+                layer: pointLayer0, 
+                view: view
+            });
+            view.ui.add(sketchWidget, {
+                position: "top-left"
+            });
+
+
+        });
+    </script>
+</body>
+</html>

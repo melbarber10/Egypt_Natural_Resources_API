@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(270deg, #a1c4fd, #c2e9fb, #f0f9ff, #d4fc79, #96e6a1);
+    background-size: 1000% 1000%;
+    animation: GradientBackground 1.5s ease infinite;
+    color: #333;
+}
+
+@keyframes GradientBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+header {
+    background-color: rgba(0, 128, 0, 0.7);
+    color: white;
+    padding: 0.5em 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+    background:lightseagreen;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1, h2, h3 {
+    color: #333;
+    font-weight: 600;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+section p {
+    font-weight: bolder;
+    max-width: 800px;
+    margin: auto;
+    text-align: justify;
+}
+
+.resource-frame {
+    background:skyblue;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    animation: TextColorChange 3s infinite;
+}
+
+.resource-frame h3, .resource-frame p {
+    margin-top: 0;
+}
+
+@keyframes TextColorChange {
+    0%, 100% { color: #FFFFFF; }
+    20% { color: #000000; }
+    40% { color: #24065f; }
+    60% { color: #212b34; }
+    80% { color: #0a3e61; }
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gallery img {
+    margin: 10px;
+    width: calc(33% - 20px);
+    height: auto;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+footer section {
+    margin-bottom: 20px;
+}
+
+footer p {
+    margin: 0;
+}
